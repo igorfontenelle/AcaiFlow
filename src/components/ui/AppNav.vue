@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import logoUrl from '@/assets/images/AçaiFlow.svg'
 
 const props = defineProps<{
   showBack?: boolean
@@ -26,7 +27,9 @@ function goBack() {
         </svg>
         Voltar
       </button>
-      <div v-else class="nav-logo">🫐</div>
+      <div v-else class="nav-logo">
+        <img :src="logoUrl" alt="AçaiFlow" />
+      </div>
     </div>
     <button class="nav-menu">
       <svg viewBox="0 0 22 16" fill="none">
@@ -56,12 +59,17 @@ function goBack() {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: #fff;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.nav-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .nav-back {
