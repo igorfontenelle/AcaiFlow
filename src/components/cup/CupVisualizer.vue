@@ -17,6 +17,10 @@ const { cup, getItem } = useMenu()
 
 const svgW = props.width ?? 180
 const svgH = props.height ?? 220
+
+const svgScale = Math.min(svgW / 180, svgH / 220)
+const svgYPad = (svgH - 220 * svgScale) / 2
+const bottomInset = Math.ceil(svgH - (206 * svgScale + svgYPad))
 </script>
 
 <template>
@@ -31,10 +35,8 @@ const svgH = props.height ?? 220
       <path
         :d="cup.svg.bodyPath"
         :fill="cup.svg.bodyFill"
-        :stroke="cup.svg.bodyStroke"
-        stroke-width="3"
+        stroke="none"
       />
-      <rect x="10" y="6" width="160" height="18" rx="9" fill="#EDE0F8" stroke="#C8A8E9" stroke-width="2.5" />
     </svg>
 
     <div
@@ -44,7 +46,7 @@ const svgH = props.height ?? 220
         top: cup.svg.layerInset.top + 'px',
         left: cup.svg.layerInset.left + 'px',
         right: cup.svg.layerInset.right + 'px',
-        bottom: cup.svg.layerInset.bottom + 'px',
+        bottom: bottomInset + 'px',
       }"
     >
       <CupLayer
@@ -64,6 +66,22 @@ const svgH = props.height ?? 220
     <div v-if="layers.length === 0" class="cup-empty-label">
       Adicione<br>ingredientes
     </div>
+
+    <svg
+      class="cup-border"
+      :viewBox="cup.svg.viewBox"
+      fill="none"
+      :width="svgW"
+      :height="svgH"
+    >
+      <path
+        :d="cup.svg.bodyPath"
+        fill="none"
+        :stroke="cup.svg.bodyStroke"
+        stroke-width="5"
+      />
+      <rect x="10" y="6" width="160" height="18" rx="9" fill="#EDE0F8" stroke="#C8A8E9" stroke-width="2.5" />
+    </svg>
   </div>
 </template>
 
@@ -82,6 +100,12 @@ const svgH = props.height ?? 220
   overflow: hidden;
   display: flex;
   flex-direction: column-reverse;
+}
+
+.cup-border {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
 .cup-empty-label {

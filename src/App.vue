@@ -27,8 +27,9 @@ const navProps = computed(() => NAV_CONFIG[route.path] ?? { showBack: false })
 
 <style scoped>
 .phone {
-  width: 390px;
-  min-height: 844px;
+  width: min(390px, 100vw);
+  height: 100vh;
+  height: 100dvh;
   background: var(--bg);
   display: flex;
   flex-direction: column;

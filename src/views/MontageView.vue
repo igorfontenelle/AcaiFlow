@@ -122,11 +122,17 @@ function handleToastDismiss() {
 <style scoped>
 .content {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
+  scrollbar-width: none;
   padding: 16px 16px 120px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
+}
+
+.content::-webkit-scrollbar {
+  display: none;
 }
 
 .cup-card {
@@ -167,7 +173,6 @@ function handleToastDismiss() {
   align-items: center;
   justify-content: center;
   position: relative;
-  min-height: 220px;
 }
 
 .arrow-btn {
