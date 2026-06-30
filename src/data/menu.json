@@ -1,0 +1,65 @@
+{
+  "cup": {
+    "id": "standard-1000g",
+    "name": "Copo Padrão",
+    "capacityGrams": 1000,
+    "pricePerKg": 53.00,
+    "svg": {
+      "viewBox": "0 0 180 220",
+      "bodyPath": "M14 18 Q14 8 24 8 H156 Q166 8 166 18 L148 206 Q146 214 136 214 H44 Q34 214 32 206 Z",
+      "bodyFill": "#F0EAF8",
+      "bodyStroke": "#C8A8E9",
+      "clipPath": "polygon(4% 0%, 96% 0%, 88% 100%, 12% 100%)",
+      "layerInset": { "top": 12, "left": 12, "right": 12, "bottom": 12 }
+    }
+  },
+  "categories": [
+    {
+      "id": "base",
+      "label": "Base",
+      "items": [
+        { "id": "acai",      "name": "Açaí",        "emoji": "🫐", "color": "#7B3FA0", "pricePerGram": 0.053, "iconPadding": 6 },
+        { "id": "ninho",     "name": "Ninho Creme",  "emoji": "🥛", "color": "#E8D5A3", "pricePerGram": 0.070, "iconPadding": 6 },
+        { "id": "coco",      "name": "Coco Creme",   "emoji": "🥥", "color": "#C8E8C8", "pricePerGram": 0.068, "iconPadding": 6 },
+        { "id": "chocolate", "name": "Choc. Creme",  "emoji": "🍫", "color": "#6B3A2A", "pricePerGram": 0.075, "iconPadding": 6 },
+        { "id": "pistache",  "name": "Pistache",     "emoji": "🌿", "color": "#A8C878", "pricePerGram": 0.090, "iconPadding": 6 },
+        { "id": "maracuja",  "name": "Maracujá",     "emoji": "🟡", "color": "#F0C840", "pricePerGram": 0.072, "iconPadding": 6 }
+      ]
+    },
+    {
+      "id": "adicionais",
+      "label": "Adicionais",
+      "items": [
+        { "id": "amendoim",     "name": "Amendoim",         "emoji": "🥜", "color": "#C8963C", "pricePerGram": 0.040, "iconPadding": 4 },
+        { "id": "leite",        "name": "Leite em Pó",      "emoji": "🍶", "color": "#FFF8C8", "pricePerGram": 0.030, "iconPadding": 4 },
+        { "id": "aveia",        "name": "Aveia",             "emoji": "🌾", "color": "#C8A85A", "pricePerGram": 0.035, "iconPadding": 4 },
+        { "id": "flacotapioca", "name": "Floco de Tapioca", "emoji": "⚪", "color": "#E8E0D0", "pricePerGram": 0.040, "iconPadding": 4 },
+        { "id": "jujuba",       "name": "Jujuba",            "emoji": "🔴", "color": "#E53935", "pricePerGram": 0.045, "iconPadding": 4 },
+        { "id": "sucrilho",     "name": "Sucrilho",          "emoji": "🟡", "color": "#FFC107", "pricePerGram": 0.035, "iconPadding": 4 }
+      ]
+    },
+    {
+      "id": "frutas",
+      "label": "Frutas",
+      "items": [
+        { "id": "banana",  "name": "Banana",  "emoji": "🍌", "color": "#FFE066", "pricePerGram": 0.045, "iconPadding": 4 },
+        { "id": "morango", "name": "Morango", "emoji": "🍓", "color": "#FF6B80", "pricePerGram": 0.060, "iconPadding": 4 },
+        { "id": "manga",   "name": "Manga",   "emoji": "🥭", "color": "#FFB830", "pricePerGram": 0.055, "iconPadding": 4 },
+        { "id": "abacaxi", "name": "Abacaxi", "emoji": "🍍", "color": "#FFD700", "pricePerGram": 0.050, "iconPadding": 4 },
+        { "id": "kiwi",    "name": "Kiwi",    "emoji": "🥝", "color": "#8BC34A", "pricePerGram": 0.060, "iconPadding": 4 },
+        { "id": "uvas",    "name": "Uvas",    "emoji": "🍇", "color": "#9C27B0", "pricePerGram": 0.055, "iconPadding": 4 }
+      ]
+    },
+    {
+      "id": "coberturas",
+      "label": "Coberturas",
+      "items": [
+        { "id": "mel",     "name": "Mel",          "emoji": "🍯", "color": "#FFB830", "pricePerGram": 0.020 },
+        { "id": "nutella", "name": "Nutella",       "emoji": "🫙", "color": "#8B5A2B", "pricePerGram": 0.060 },
+        { "id": "calda",   "name": "Calda Morango", "emoji": "🍓", "color": "#FF4060", "pricePerGram": 0.025 }
+      ]
+    }
+  ],
+  "incrementOptions": [50, 100, 200],
+  "defaultIncrement": 50
+}

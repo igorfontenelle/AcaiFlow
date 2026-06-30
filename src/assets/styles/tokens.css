@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --nav-bg:        #C8A8E9;
+  --purple:        #8B44C4;
+  --purple-mid:    #9B5EC7;
+  --purple-light:  #EDE0F8;
+  --purple-xlight: #F6F0FD;
+  --lavanda-ui:    #C9B8E8;
+  --gold:          #D4922A;
+  --green:         #34C759;
+  --green-dark:    #30D158;
+  --bg:            #F2F2F7;
+  --surface:       #FFFFFF;
+  --separator:     rgba(139, 68, 196, 0.14);
+  --text:          #1C1C1E;
+  --text-2:        #6E6E73;
+  --red:           #FF3B30;
+  --radius:        16px;
+
+  --font-display:  'Poppins', sans-serif;
+  --font-body:     'Inter', -apple-system, sans-serif;
+
+  --shadow-card:    0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(139, 68, 196, 0.07);
+  --shadow-card-lg: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(139, 68, 196, 0.08);
+  --gradient-primary: linear-gradient(135deg, var(--purple), #B06AE0);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes pop {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
