@@ -21,7 +21,7 @@ const emit = defineEmits<{ edit: [index: number] }>()
     :style="{ height: heightPercent + '%', background: color }"
     @click="clickable && emit('edit', index)"
   >
-    <span v-if="clickable && heightPercent > 8" class="cup-layer-label">
+    <span v-if="clickable" class="cup-layer-label">
       <img v-if="ingredientImages[ingredientId]" :src="ingredientImages[ingredientId]" :alt="ingredientId" class="layer-img" :style="{ padding: Math.round(props.iconPadding * 20 / 72) + 'px' }" />
       <span v-else>{{ emoji }}</span>
     </span>
@@ -34,6 +34,7 @@ const emit = defineEmits<{ edit: [index: number] }>()
   opacity: 0.88;
   position: relative;
   flex-shrink: 0;
+  overflow: hidden;
   transition: height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 

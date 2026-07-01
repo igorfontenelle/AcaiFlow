@@ -25,28 +25,34 @@ const STEPS = [
 <template>
   <ProgressStepper :steps="STEPS" :current-step="2" />
   <div class="pag-content">
-    <PaymentSelector :selected="selectedPayment" @select="selectedPayment = $event" />
-    <ContactForm v-model="customer" />
-    <DeliverySelector :selected="selectedDelivery" @select="selectedDelivery = $event" />
+    <div class="pag-inner">
+      <PaymentSelector :selected="selectedPayment" @select="selectedPayment = $event" />
+      <ContactForm v-model="customer" />
+      <DeliverySelector :selected="selectedDelivery" @select="selectedDelivery = $event" />
 
-    <div class="mini-summary">
-      <div class="mini-summary-header"><span>Resumo do Pedido</span></div>
-      <div class="mini-summary-body">
-        <span class="mini-summary-label">Total</span>
-        <span class="mini-summary-value">{{ formatPrice(totalPrice) }}</span>
+      <div class="mini-summary">
+        <div class="mini-summary-header"><span>Resumo do Pedido</span></div>
+        <div class="mini-summary-body">
+          <span class="mini-summary-label">Total</span>
+          <span class="mini-summary-value">{{ formatPrice(totalPrice) }}</span>
+        </div>
       </div>
-    </div>
 
-    <BaseButton variant="primary" full-width @click="router.push('/sucesso')">
-      Confirmar Pedido
-    </BaseButton>
+      <BaseButton variant="primary" full-width @click="router.push('/sucesso')">
+        Confirmar Pedido
+      </BaseButton>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .pag-content {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
+}
+
+.pag-inner {
   padding: 20px 16px 40px;
   display: flex;
   flex-direction: column;

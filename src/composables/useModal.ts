@@ -66,6 +66,11 @@ export function useModal() {
     stepGrams.value = Math.max(val, Math.round(stepGrams.value / val) * val)
   }
 
+  function setGramsDirect(value: number) {
+    const clamped = Math.max(1, Math.min(value, availableGrams.value))
+    stepGrams.value = Math.round(clamped * 10) / 10
+  }
+
   function confirmAdd() {
     if (!targetItemId.value) return
     if (editLayerIndex.value !== null) {
@@ -99,6 +104,7 @@ export function useModal() {
     close,
     stepChange,
     setIncrement,
+    setGramsDirect,
     confirmAdd,
     confirmRemove,
   }

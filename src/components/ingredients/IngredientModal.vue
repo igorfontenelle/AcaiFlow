@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, nextTick } from 'vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import { useModal } from '@/composables/useModal'
 import { useMenu } from '@/composables/useMenu'
@@ -18,9 +18,33 @@ const {
   close,
   stepChange,
   setIncrement,
+  setGramsDirect,
   confirmAdd,
   confirmRemove,
 } = useModal()
+
+const isEditingGrams = ref(false)
+const rawInput = ref('')
+const gramInputRef = ref<HTMLInputElement | null>(null)
+
+function openGramInput() {
+  rawInput.value = String(stepGrams.value)
+  isEditingGrams.value = true
+  nextTick(() => gramInputRef.value?.select())
+}
+
+function commitGramInput() {
+  const normalized = rawInput.value.replace(',', '.')
+  const parsed = parseFloat(normalized)
+  if (!isNaN(parsed) && parsed > 0) {
+    setGramsDirect(parsed)
+  }
+  isEditingGrams.value = false
+}
+
+function cancelGramInput() {
+  isEditingGrams.value = false
+}
 
 const { getItem, incrementOptions } = useMenu()
 
@@ -63,7 +87,21 @@ function handleOverlayClick(e: MouseEvent) {
           <div class="stepper">
             <button class="step-btn" :disabled="!canDecrease" @click="stepChange(-1)">−</button>
             <div class="step-display">
-              <span class="step-value">{{ stepGrams }}</span>
+              <template v-if="isEditingGrams">
+                <input
+                  ref="gramInputRef"
+                  v-model="rawInput"
+                  class="step-input"
+                  type="text"
+                  inputmode="decimal"
+                  @blur="commitGramInput"
+                  @keydown.enter.prevent="commitGramInput"
+                  @keydown.escape="cancelGramInput"
+                />
+              </template>
+              <template v-else>
+                <span class="step-value step-value--clickable" @click="openGramInput">{{ stepGrams }}</span>
+              </template>
               <span class="step-unit">g</span>
             </div>
             <button class="step-btn" :disabled="!canIncrease" @click="stepChange(1)">+</button>
@@ -236,6 +274,25 @@ function handleOverlayClick(e: MouseEvent) {
   font-weight: 900;
   color: var(--text);
   letter-spacing: -0.5px;
+}
+
+.step-value--clickable {
+  cursor: pointer;
+  text-decoration: underline dotted var(--text-2);
+  text-underline-offset: 4px;
+}
+
+.step-input {
+  width: 80px;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--purple);
+  text-align: center;
+  outline: none;
 }
 
 .step-unit {

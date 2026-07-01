@@ -65,6 +65,7 @@ const { totalGrams, totalPrice, gaugePercent, formatPrice } = usePricing(layers,
 <style scoped>
 .detail-content {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding: 16px 16px 40px;
   display: flex;
