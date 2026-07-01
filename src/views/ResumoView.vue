@@ -21,9 +21,11 @@ const STEPS = [
   <div class="resumo-content">
     <h1 class="page-title">Resumo do Pedido</h1>
     <OrderTable :layers="layers" />
-    <BaseButton variant="primary" full-width @click="router.push('/pagamento')">
-      Ir para Pagamento →
-    </BaseButton>
+    <div class="action-wrap">
+      <BaseButton variant="primary" full-width @click="router.push('/pagamento')">
+        Ir para Pagamento →
+      </BaseButton>
+    </div>
   </div>
 </template>
 
@@ -31,7 +33,6 @@ const STEPS = [
 .resumo-content {
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
   padding: 20px 16px 32px;
   display: flex;
   flex-direction: column;
@@ -39,10 +40,15 @@ const STEPS = [
 }
 
 .page-title {
+  flex-shrink: 0;
   font-size: 26px;
   font-weight: 900;
   color: var(--text);
   letter-spacing: -0.5px;
   padding: 0 4px;
+}
+
+.action-wrap {
+  flex-shrink: 0;
 }
 </style>

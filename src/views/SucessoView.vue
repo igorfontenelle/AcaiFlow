@@ -37,46 +37,48 @@ function novosPedido() {
 <template>
   <ProgressStepper :steps="STEPS" :current-step="3" />
   <div class="success-screen">
-    <div class="success-ring">
-      <svg viewBox="0 0 56 56" fill="none">
-        <path d="M12 28L23 39L44 17" stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </div>
+    <div class="success-inner">
+      <div class="success-ring">
+        <svg viewBox="0 0 56 56" fill="none">
+          <path d="M12 28L23 39L44 17" stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
 
-    <h2 class="success-title">Pedido Finalizado<br>com Sucesso! 🎉</h2>
-    <p class="success-sub">Seu açaí está sendo preparado<br>com muito carinho.</p>
+      <h2 class="success-title">Pedido Finalizado<br>com Sucesso! 🎉</h2>
+      <p class="success-sub">Seu açaí está sendo preparado<br>com muito carinho.</p>
 
-    <div class="success-card">
-      <div class="success-card-header"><span>Detalhes do Pedido</span></div>
-      <div class="success-card-body">
-        <div class="success-card-row">
-          <span class="scard-label">Cliente</span>
-          <span class="scard-value">{{ customer.name || '–' }}</span>
-        </div>
-        <div class="success-card-row">
-          <span class="scard-label">Camadas</span>
-          <span class="scard-value">{{ layers.length }}</span>
-        </div>
-        <div class="success-card-row">
-          <span class="scard-label">Peso total</span>
-          <span class="scard-value">{{ totalGrams }}g</span>
-        </div>
-        <div class="success-card-row">
-          <span class="scard-label">Pagamento</span>
-          <span class="scard-value">{{ PAY_LABELS[selectedPayment] ?? '–' }}</span>
-        </div>
-        <div class="success-card-row">
-          <span class="scard-label">Entrega</span>
-          <span class="scard-value">{{ DEL_LABELS[selectedDelivery] ?? '–' }}</span>
-        </div>
-        <div class="success-card-row">
-          <span class="scard-label">Total</span>
-          <span class="scard-value highlight">{{ formatPrice(totalPrice) }}</span>
+      <div class="success-card">
+        <div class="success-card-header"><span>Detalhes do Pedido</span></div>
+        <div class="success-card-body">
+          <div class="success-card-row">
+            <span class="scard-label">Cliente</span>
+            <span class="scard-value">{{ customer.name || '–' }}</span>
+          </div>
+          <div class="success-card-row">
+            <span class="scard-label">Camadas</span>
+            <span class="scard-value">{{ layers.length }}</span>
+          </div>
+          <div class="success-card-row">
+            <span class="scard-label">Peso total</span>
+            <span class="scard-value">{{ totalGrams }}g</span>
+          </div>
+          <div class="success-card-row">
+            <span class="scard-label">Pagamento</span>
+            <span class="scard-value">{{ PAY_LABELS[selectedPayment] ?? '–' }}</span>
+          </div>
+          <div class="success-card-row">
+            <span class="scard-label">Entrega</span>
+            <span class="scard-value">{{ DEL_LABELS[selectedDelivery] ?? '–' }}</span>
+          </div>
+          <div class="success-card-row">
+            <span class="scard-label">Total</span>
+            <span class="scard-value highlight">{{ formatPrice(totalPrice) }}</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <button class="success-btn" @click="novosPedido">Fazer Novo Pedido</button>
+      <button class="success-btn" @click="novosPedido">Fazer Novo Pedido</button>
+    </div>
   </div>
 </template>
 
@@ -84,13 +86,22 @@ function novosPedido() {
 .success-screen {
   flex: 1;
   min-height: 0;
+  overflow-y: auto;
+  background: var(--bg);
+  scrollbar-width: none;
+}
+
+.success-screen::-webkit-scrollbar {
+  display: none;
+}
+
+.success-inner {
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 32px 24px;
-  background: var(--bg);
-  overflow-y: auto;
 }
 
 .success-ring {

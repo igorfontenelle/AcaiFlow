@@ -66,14 +66,15 @@ const { totalGrams, totalPrice, gaugePercent, formatPrice } = usePricing(layers,
 .detail-content {
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
-  padding: 16px 16px 40px;
+  overflow: hidden;
+  padding: 16px 16px 16px;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
 .detail-cup-card {
+  flex-shrink: 0;
   background: var(--surface);
   border-radius: var(--radius);
   padding: 16px;
@@ -124,6 +125,7 @@ const { totalGrams, totalPrice, gaugePercent, formatPrice } = usePricing(layers,
 }
 
 .detail-total {
+  flex-shrink: 0;
   background: linear-gradient(135deg, var(--purple), #B06AE0);
   border-radius: var(--radius);
   padding: 18px 20px;

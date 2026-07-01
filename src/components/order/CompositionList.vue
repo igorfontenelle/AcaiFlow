@@ -31,31 +31,48 @@ function posLabel(realIndex: number): string {
       <span class="composition-title">Composição</span>
       <slot name="total" />
     </div>
-    <div v-if="!layers.length" class="comp-empty">Nenhum ingrediente adicionado ainda.</div>
-    <CompositionItem
-      v-for="{ layer, realIndex } in reversedLayers"
-      :key="realIndex"
-      :ingredient-id="layer.id"
-      :icon-padding="getItem(layer.id)?.iconPadding ?? 0"
-      :name="getItem(layer.id)?.name ?? layer.id"
-      :emoji="getItem(layer.id)?.emoji ?? ''"
-      :color="getItem(layer.id)?.color ?? '#ccc'"
-      :grams="layer.grams"
-      :pct-of-total="totalGrams > 0 ? Math.round((layer.grams / totalGrams) * 100) : 0"
-      :pct-of-cup="Math.round((layer.grams / capacityGrams) * 100)"
-      :pos-label="posLabel(realIndex)"
-      :layer-index="realIndex"
-      @edit="emit('editLayer', $event)"
-    />
+    <div class="composition-body">
+      <div v-if="!layers.length" class="comp-empty">Nenhum ingrediente adicionado ainda.</div>
+      <CompositionItem
+        v-for="{ layer, realIndex } in reversedLayers"
+        :key="realIndex"
+        :ingredient-id="layer.id"
+        :icon-padding="getItem(layer.id)?.iconPadding ?? 0"
+        :name="getItem(layer.id)?.name ?? layer.id"
+        :emoji="getItem(layer.id)?.emoji ?? ''"
+        :color="getItem(layer.id)?.color ?? '#ccc'"
+        :grams="layer.grams"
+        :pct-of-total="totalGrams > 0 ? Math.round((layer.grams / totalGrams) * 100) : 0"
+        :pct-of-cup="Math.round((layer.grams / capacityGrams) * 100)"
+        :pos-label="posLabel(realIndex)"
+        :layer-index="realIndex"
+        @edit="emit('editLayer', $event)"
+      />
+    </div>
   </div>
 </template>
 
 <style scoped>
 .composition-section {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
   background: var(--surface);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(139, 68, 196, 0.06);
+}
+
+.composition-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.composition-body::-webkit-scrollbar {
+  display: none;
 }
 
 .composition-header {

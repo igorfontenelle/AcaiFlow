@@ -24,17 +24,19 @@ const { totalGrams, totalPrice, formatPrice } = usePricing(
       <span>Quantidade</span>
       <span>Subtotal</span>
     </div>
-    <OrderRow
-      v-for="(layer, i) in layers"
-      :key="i"
-      :ingredient-id="layer.id"
-      :icon-padding="getItem(layer.id)?.iconPadding ?? 0"
-      :emoji="getItem(layer.id)?.emoji ?? ''"
-      :color="getItem(layer.id)?.color ?? '#ccc'"
-      :name="getItem(layer.id)?.name ?? layer.id"
-      :grams="layer.grams"
-      :price="formatPrice((getItem(layer.id)?.pricePerGram ?? 0) * layer.grams)"
-    />
+    <div class="order-rows">
+      <OrderRow
+        v-for="(layer, i) in layers"
+        :key="i"
+        :ingredient-id="layer.id"
+        :icon-padding="getItem(layer.id)?.iconPadding ?? 0"
+        :emoji="getItem(layer.id)?.emoji ?? ''"
+        :color="getItem(layer.id)?.color ?? '#ccc'"
+        :name="getItem(layer.id)?.name ?? layer.id"
+        :grams="layer.grams"
+        :price="formatPrice((getItem(layer.id)?.pricePerGram ?? 0) * layer.grams)"
+      />
+    </div>
     <div class="order-total-row">
       <div class="order-total-left">
         <span class="order-total-title">Total</span>
@@ -47,6 +49,10 @@ const { totalGrams, totalPrice, formatPrice } = usePricing(
 
 <style scoped>
 .order-card {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
   background: var(--surface);
   border-radius: var(--radius);
   overflow: hidden;
@@ -54,11 +60,23 @@ const { totalGrams, totalPrice, formatPrice } = usePricing(
 }
 
 .order-table-header {
+  flex-shrink: 0;
   display: grid;
   grid-template-columns: 1fr 70px 90px;
   padding: 12px 16px;
   background: var(--surface);
   border-bottom: 1.5px solid var(--separator);
+}
+
+.order-rows {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.order-rows::-webkit-scrollbar {
+  display: none;
 }
 
 .order-table-header span {
@@ -78,6 +96,7 @@ const { totalGrams, totalPrice, formatPrice } = usePricing(
 }
 
 .order-total-row {
+  flex-shrink: 0;
   background: var(--purple-xlight);
   padding: 14px 16px;
   display: flex;
